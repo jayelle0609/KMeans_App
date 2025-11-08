@@ -17,12 +17,10 @@ import plotly.express as px
 from PIL import Image
 
 clus_img = Image.open("clus.png")
-
-clus_img = clus_img.resize((400, 300))  
 st.image(clus_img, caption="Unsupervised Learning - KMeans Clustering")
 
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="centered")
 st.title("Unsupervised Learning App")
 st.success("##### Upload a dataset to perform Clustering + PCA + Statistical Analysis.")
 

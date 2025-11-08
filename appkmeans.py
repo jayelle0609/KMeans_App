@@ -26,7 +26,7 @@ uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
 else:
-    st.info("Using default sample dataset (that Jia Ling made)")
+    st.info("Using default sample dataset")
     df = pd.read_csv("sample.csv")  # Ensure 'sample.csv' exists in folder
 
 st.write("Data preview:")
@@ -365,3 +365,36 @@ elif info_option == "Davies-Bouldin Score":
     st.info("Davies-Bouldin Score measures average similarity between each cluster and its most similar cluster. "
             "Lower scores indicate better cluster separation.")
 
+
+##################################################################################
+st.markdown("---")
+st.title("Check Out Jayelle's Portfolio!")
+
+st.markdown("""
+Welcome! Here are some of my personal websites and portfolio pages where you can learn more about me and my work:
+""")
+
+# List of links
+links = {
+    "My Website": "https://jayelle0609.github.io/jialing",
+    "Tableau Visualizations": "https://public.tableau.com/app/profile/jialingteo/vizzes",
+    "GitHub Portfolio": "https://github.com/jayelle0609/Portfolio",
+    "Linkedin" : "https://www.linkedin.com/in/jialingteo/",
+    "Prediction App using Regression (for interview)" : "jialingpredict.streamlit.app"
+
+}
+
+for name, url in links.items():
+    st.markdown(f"- [{name}]({url})")
+
+st.markdown("""
+---
+*Feel free to reach out or explore more!*  
+<span style="font-size:10px;">
+[Email Me!](mailto:jayelleteo@gmail.com) | [WhatsApp Me!](https://wa.me/6580402496)
+</span>
+<br>
+<span style="font-size:12px; color:gray;">
+
+</span>
+""", unsafe_allow_html=True)

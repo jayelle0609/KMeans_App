@@ -26,7 +26,7 @@ uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
 else:
-    st.info("Using default sample dataset (Calories expenditure)")
+    st.info("Using default sample dataset (that Jia Ling made)")
     df = pd.read_csv("sample.csv")  # Ensure 'sample.csv' exists in folder
 
 st.write("Data preview:")

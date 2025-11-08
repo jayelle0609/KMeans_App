@@ -17,7 +17,10 @@ import plotly.express as px
 from PIL import Image
 
 clus_img = Image.open("clus.png")
-st.image(clus_img, caption="Unsupervised Learning - KMeans Clustering", use_column_width=True)
+
+clus_img = clus_img.resize((400, 300))  
+st.image(clus_img, caption="Unsupervised Learning - KMeans Clustering")
+
 
 st.set_page_config(layout="wide")
 st.title("Unsupervised Learning App")

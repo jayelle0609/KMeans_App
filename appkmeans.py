@@ -14,6 +14,10 @@ from scipy.stats import f_oneway, kruskal, chi2_contingency
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
+from PIL import Image
+
+clus_img = Image.open("clus.png")
+st.image(clus_img, caption="Unsupervised Learning - KMeans Clustering", use_column_width=True)
 
 st.set_page_config(layout="wide")
 st.title("Unsupervised Learning App")

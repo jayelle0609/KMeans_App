@@ -385,7 +385,7 @@ links = {
     "Tableau Visualizations": "https://public.tableau.com/app/profile/jialingteo/vizzes",
     "GitHub Portfolio": "https://github.com/jayelle0609/Portfolio",
     "Linkedin" : "https://www.linkedin.com/in/jialingteo/",
-    "Prediction App using Regression (for interview)" : "jialingpredict.streamlit.app"
+    "Prediction App using Regression Models (for PMO interview)" : ""https://jialingpredict.streamlit.app"
 
 }
 

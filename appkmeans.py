@@ -31,13 +31,19 @@ st.success("##### Upload a dataset to perform Clustering + PCA + Statistical Ana
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
 if uploaded_file is not None:
     try:
-        df = pd.read_csv(uploaded_file, encoding='utf-8')  # specify encoding
+        # Try reading CSV normally
+        df = pd.read_csv(uploaded_file, encoding='utf-8', on_bad_lines='skip')
     except UnicodeDecodeError:
-        # fallback if utf-8 fails
-        df = pd.read_csv(uploaded_file, encoding='ISO-8859-1')
+        # fallback encoding
+        uploaded_file.seek(0)  # reset pointer
+        df = pd.read_csv(uploaded_file, encoding='ISO-8859-1', on_bad_lines='skip')
+    except pd.errors.ParserError:
+        # fallback if comma is not the separator
+        uploaded_file.seek(0)
+        df = pd.read_csv(uploaded_file, sep=';', encoding='utf-8', on_bad_lines='skip')
 else:
     st.info("Using default sample dataset")
-    df = pd.read_csv("sample.csv", encoding='utf-8')  # Ensure 'sample.csv' exists in folder
+    df = pd.read_csv("sample.csv", encoding='utf-8', on_bad_lines='skip')
 
 st.write("Data preview:")
 st.dataframe(df.head())

@@ -28,19 +28,22 @@ st.success("##### Upload a dataset to perform Clustering + PCA + Statistical Ana
 # -------------------------------
 # Upload CSV or use sample
 # -------------------------------
-uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
+uploaded_file = st.file_uploader(
+    "Upload your file",
+    type=["csv", "xls", "xlsx"]  # allow CSV and Excel files
+)
+
 if uploaded_file is not None:
     try:
-        # Try reading CSV normally
-        df = pd.read_csv(uploaded_file, encoding='utf-8', on_bad_lines='skip')
+        if uploaded_file.name.endswith(".csv"):
+            df = pd.read_csv(uploaded_file, encoding='utf-8', on_bad_lines='skip')
+        else:  # Excel file
+            df = pd.read_excel(uploaded_file)
     except UnicodeDecodeError:
-        # fallback encoding
-        uploaded_file.seek(0)  # reset pointer
-        df = pd.read_csv(uploaded_file, encoding='ISO-8859-1', on_bad_lines='skip')
-    except pd.errors.ParserError:
-        # fallback if comma is not the separator
         uploaded_file.seek(0)
-        df = pd.read_csv(uploaded_file, sep=';', encoding='utf-8', on_bad_lines='skip')
+        df = pd.read_csv(uploaded_file, encoding='ISO-8859-1', on_bad_lines='skip')
+    except Exception as e:
+        st.error(f"Error loading file: {e}")
 else:
     st.info("Using default sample dataset")
     df = pd.read_csv("sample.csv", encoding='utf-8', on_bad_lines='skip')

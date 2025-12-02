@@ -18,7 +18,7 @@ from PIL import Image
 
 clus_img = Image.open("clus.png")
 st.image(clus_img, caption="Unsupervised Learning - KMeans Clustering")
-st.caption("**This app was created solely for an interview with Prime Ministers Office on 12-Nov-2025, for a research analytics position.**")
+st.caption("**This app was created solely out of my interest in making studiable patterns from complicated data.**")
 
 
 st.set_page_config(layout="centered")
